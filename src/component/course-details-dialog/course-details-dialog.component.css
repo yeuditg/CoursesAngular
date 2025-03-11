@@ -1,0 +1,50 @@
+.button {
+    position: relative;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    /* מסגרת שקופה בהתחלה */
+    border-radius: 5px;
+    background-color: transparent;
+    /* רקע שקוף */
+    color: white;
+    /* צבע טקסט */
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+    /* הוספת אנימציה לשינוי צבע המסגרת */
+    animation: gradient-border 3s infinite;
+    /* הפעלת האנימציה */
+}
+
+.button:hover {
+    color: #6200ea;
+    /* שינוי צבע טקסט בעת ריחוף */
+    border-color: transparent;
+    /* מסגרת שקופה בעת ריחוף */
+}
+
+@keyframes gradient-border {
+    0% {
+        border-color: #6200ea;
+    }
+
+    20% {
+        border-color: #03dac5;
+    }
+
+    40% {
+        border-color: #ff4081;
+    }
+
+    60% {
+        border-color: #ffab40;
+    }
+
+    80% {
+        border-color: #651fff;
+    }
+
+    100% {
+        border-color: #6200ea;
+    }
+}

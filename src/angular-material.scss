@@ -1,0 +1,16 @@
+
+
+// @include angular-material-theme($theme);
+@import '@angular/material/theming';
+@include mat-core();
+
+// הגדרת צבעים
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink);
+$warn: mat-palette($mat-red);
+
+// הגדרת נושא
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// יישום הנושא
+@include angular-material-theme($theme);

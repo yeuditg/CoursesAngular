@@ -1,0 +1,15 @@
+.course-tile {
+  padding: 8px;
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.mat-card:hover {
+  transform: scale(1.05);
+}
+

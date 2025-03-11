@@ -1,0 +1,47 @@
+/* מרכז את הטופס */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* גובה של 100% מהחלון */
+    background-color: #f5f5f5; /* צבע רקע */
+}
+
+/* עיצוב הטופס */
+form {
+    width: 400px; /* רוחב קבוע */
+    /* padding: 20px; */
+     /* רווח פנימי */
+    background-color: white; /* צבע רקע של הטופס */
+    border-radius: 8px; /* פינות מעוגלות */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* צל */
+}
+
+/* עיצוב שדות הטופס */
+mat-form-field {
+    width: 100%; /* רוחב 100% */
+    /* margin-bottom: 8px;  */
+}
+
+/* צבע המסגרת של השדות תקניים */
+mat-form-field.ng-valid .mat-form-field-outline {
+    border-color: #009688; /* צבע ירוק טורקיז */
+}
+
+/* צבע המסגרת של השדות לא תקניים */
+mat-form-field.ng-invalid .mat-form-field-outline {
+    border-color: red; /* צבע אדום לשגיאות */
+}
+
+/* כפתור */
+button {
+    width: 100%; /* רוחב 100% */
+    margin-top: 16px; /* רווח מעל הכפתור */
+}
+
+/* עיצוב שגיאות */
+.error-message {
+    color: red; /* צבע אדום לשגיאות */
+    font-size: 0.875em; /* גודל טקסט קטן יותר */
+    /* margin-top: 4px; */
+} 

@@ -1,0 +1,33 @@
+<div class="course-management">
+  <h2>ניהול קורסים</h2>
+  <button mat-raised-button color="primary" class="button-animation" (click)="openDialog()">הוסף קורס חדש</button>
+  <mat-table [dataSource]="courses$" class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> שם קורס </mat-header-cell>
+      <mat-cell *matCellDef="let course"> {{ course.title }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> תיאור </mat-header-cell>
+      <mat-cell *matCellDef="let course"> {{ course.description }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> פעולות </mat-header-cell>
+      <mat-cell *matCellDef="let course"> 
+        <button mat-icon-button class="button-animation" (click)="openCourseDetails(course)">
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <button mat-icon-button class="button-animation" (click)="openDialog(course)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="button-animation" (click)="deleteCourse(course.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['title', 'description', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['title', 'description', 'actions'];"></mat-row>
+  </mat-table>
+</div>

@@ -1,0 +1,27 @@
+<mat-dialog-content class="dialog-content">
+    <h2 mat-dialog-title class="dialog-title">פרטי הקורס</h2>
+    <p><strong>שם קורס:</strong> {{ data.title }}</p>
+    <p><strong>תיאור:</strong> {{ data.description }}</p>
+    <p><strong>מזהה מורה:</strong> {{ data.teacherId }}</p>
+    <p><strong>שיעורים:</strong></p>
+    @if (data.lessons && data.lessons.length > 0)
+    {
+    <mat-card class="lesson-card">
+        @for( lesson of data.lessons ; track lesson.id)
+        {
+        <mat-card-header>
+            <mat-icon>book</mat-icon>
+            <mat-card-title>{{ lesson.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ lesson.content }}</p>
+            <button mat-button class="button" (click)="downloadMaterials(lesson)">הורד חומרים</button>
+        </mat-card-content>
+        }
+    </mat-card>
+    }
+    @if(!data.lessons || data.lessons.length === 0)
+    {
+    <p><span>אין שיעורים</span></p>
+    }
+</mat-dialog-content>

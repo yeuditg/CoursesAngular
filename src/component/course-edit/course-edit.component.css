@@ -1,0 +1,39 @@
+h1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-icon {
+    margin-right: 8px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-dialog-content {
+    padding: 20px;
+  }
+  @keyframes color-change {
+    0% { color: #6200ea; }
+    25% { color: #03dac5; }
+    50% { color: #ff4081; }
+    75% { color: #6200ea; }
+    100% { color: #03dac5; }
+}
+
+.dialog-container {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dialog-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* הוספת אנימציה צבעונית לכותרת */
+.dialog-title {
+    animation: color-change 5s infinite; /* אנימציה מתמשכת */
+}

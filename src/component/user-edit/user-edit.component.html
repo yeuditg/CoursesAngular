@@ -1,0 +1,41 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" required>
+      @if(editForm.get('name')?.invalid && editForm.get('name')?.touched)
+      {
+        <div >
+          Name is required.
+        </div>
+      }
+    </div>
+  
+    <div>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" required>
+      @if(editForm.get('email')?.invalid && editForm.get('email')?.touched){
+        <div > Valid email is required. </div>
+      }
+    </div>
+  
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" required>
+      @if(editForm.get('password')?.invalid && editForm.get('password')?.touched){
+        <div >
+          Password is required.
+        </div>
+      }
+    </div>
+  
+    <div>
+      <label for="role">Role</label>
+      <select id="role" formControlName="role">
+        <option value="student">Student</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+  
+    <button type="submit" [disabled]="editForm.invalid">Update</button>
+  </form>
+  

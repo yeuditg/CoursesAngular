@@ -1,0 +1,74 @@
+/* table {
+    width: 100%;
+}
+
+.mat-header-cell, .mat-cell {
+    text-align: left;
+    padding: 16px;
+}
+
+.mat-header-row {
+    background: #f5f5f5;
+} */
+
+
+
+
+/* 
+.course-details {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin-top: 8px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  } */
+
+  
+
+  .course-management {
+    padding: 20px;
+  }
+  
+  .mat-table {
+    width: 100%;
+  }
+  
+  button {
+    margin-right: 10px;
+  }
+     
+  .course-management {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #6200ea; /* צבע קבוע לכותרת */
+}
+
+.button-animation {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-animation:hover {
+    background-color: #6200ea;
+    transform: scale(1.05);
+}
+
+.mat-header-cell, .mat-cell {
+    transition: background-color 0.3s ease;
+}
+
+.mat-header-cell:hover, .mat-cell:hover {
+    background-color: #e0e0e0; /* צבע רקע כאשר עכבר מעל */
+}
+
+.mat-icon {
+    transition: color 0.3s ease; /* אנימציה לצבע האייקונים */
+}
+
+.mat-icon:hover {
+    color: #6200ea; /* צבע האייקון כאשר העכבר מעל */
+}

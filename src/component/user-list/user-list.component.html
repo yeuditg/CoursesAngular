@@ -1,0 +1,25 @@
+<p>user-list works!</p>
+<h2>User List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    @for(user of users;track user.id){
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td>
+        <!-- <a [routerLink]="['/edit', user.id]">Edit</a> -->
+        <!-- <button (click)="deleteUser(user.id)">Delete</button> -->
+      </td>
+    }
+    </tr>
+  </tbody>
+</table>

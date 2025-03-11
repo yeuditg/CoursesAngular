@@ -1,0 +1,76 @@
+<div class="form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ isRegister ? 'Register' : 'Login' }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="your@email.com" required>
+                    <mat-icon matPrefix>email</mat-icon>
+                </mat-form-field>
+                @if(loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty ||
+                loginForm.controls['email'].touched)) {
+                @if(loginForm.controls['email'].errors?.['required']){
+                <mat-error>Email is required.</mat-error>
+                }
+                @if(loginForm.controls['email'].errors?.['email']){
+                <mat-error>Invalid email format.</mat-error>
+                }
+                }
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" required>
+                    <mat-icon matPrefix>lock</mat-icon>
+                </mat-form-field>
+                @if(loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty ||
+                loginForm.controls['password'].touched)){
+                @if(loginForm.controls['password'].errors?.['required']){
+                <mat-error>Password is required.</mat-error>
+                }
+                @if(loginForm.controls['password'].errors?.['passwordStrength']){
+                <mat-error>
+                    Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and be
+                    at least 9 characters long.
+                </mat-error>
+                }
+                }
+                @if(isRegister){
+                <ng-container>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" required>
+                        <mat-icon matPrefix>person</mat-icon>
+                    </mat-form-field>
+                    @if(loginForm.controls['name'].invalid && (loginForm.controls['name'].dirty ||
+                    loginForm.controls['name'].touched)) {
+                    @if(loginForm.controls['name'].errors?.['required']){
+                    <mat-error>Name is required.</mat-error>
+                    }
+                    }
+                    <div>
+                        <label for="role">Role</label>
+                        <select id="role" formControlName="role">
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                            <option value="teacher">Teacher</option>
+                        </select>
+                    </div>
+                </ng-container>
+                }
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit">
+                    {{ isRegister ? 'Register' : 'Login' }}
+                </button>
+                <button mat-button color="accent" type="button" (click)="toggleRegister()">
+                    {{ isRegister ? 'Already have an account? Login' : 'Don\'t have an account? Register' }}
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
