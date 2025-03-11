@@ -1,5 +1,4 @@
 <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
-  *ngFor="let course of courses$ | async"
   <mat-grid-tile class="course-tile">
     @for(course of (courses$ | async); track course.id){
 

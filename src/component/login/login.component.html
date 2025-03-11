@@ -1,6 +1,6 @@
 <div class="form-container">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <mat-card>
+      
             <mat-card-header>
                 <mat-card-title>{{ isRegister ? 'Register' : 'Login' }}</mat-card-title>
             </mat-card-header>
@@ -71,6 +71,6 @@
                     {{ isRegister ? 'Already have an account? Login' : 'Don\'t have an account? Register' }}
                 </button>
             </mat-card-actions>
-        </mat-card>
+       
     </form>
 </div>
