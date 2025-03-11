@@ -1,4 +1,4 @@
-<mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
+<!-- <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
   <mat-grid-tile class="course-tile">
     @for(course of (courses$ | async); track course.id){
 
@@ -31,5 +31,36 @@
       </mat-card-actions>
     </mat-card>
     }
+  </mat-grid-tile>
+</mat-grid-list> -->
+
+<mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
+  <mat-grid-tile class="course-tile" *ngFor="let course of (courses$ | async); trackBy: trackByCourseId">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ course.title }}</mat-card-title>
+        <mat-card-subtitle>{{ course.description }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>מדריך: {{ course.teacherId }}</p>
+        <p>שיעורים:</p>
+        <ul>
+          <li *ngFor="let lesson of course.lessons">{{ lesson.title }}</li>
+        </ul>
+        <p *ngIf="enrolledCourses.has(course.id)">מצורף לקורס</p>
+        <p *ngIf="!enrolledCourses.has(course.id)">לא מצורף לקורס</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openCourseDetails(course)">
+          <mat-icon>info</mat-icon> פרטי הקורס
+        </button>
+        <button mat-button (click)="joinCourse(course)" *ngIf="!enrolledCourses.has(course.id)">
+          <mat-icon>add</mat-icon> הצטרף
+        </button>
+        <button mat-button (click)="leaveCourse(course)" *ngIf="enrolledCourses.has(course.id)">
+          <mat-icon>remove</mat-icon> עזוב
+        </button>
+      </mat-card-actions>
+    </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

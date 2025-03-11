@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CourseDetailsDialogComponent } from '../course-details-dialog/course-details-dialog.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { UserService } from '../../service/user.service';
+import { LessonService } from '../../service/lesson.service';
 
 
 @Component({
@@ -23,18 +24,18 @@ export class MyCoursesComponent implements OnInit {
   courses$ = new BehaviorSubject<courseType[]>([]);
   enrolledCourses: Set<number> = new Set(); // Set to track enrolled courses
 
-  constructor(private courseService: CourseService, public dialog: MatDialog, private userService: UserService) { }
+  constructor(private courseService: CourseService, public dialog: MatDialog, private userService: UserService,private lessonService:LessonService) { }
 
   ngOnInit(): void {
     this.loadCourses();
     this.loadEnrolledCourses(); // Load the courses the user is enrolled in
   }
 
-  loadCourses(): void {
-    this.courseService.getCourses().subscribe(courses => {
-      this.courses$.next(courses);
-    });
-  }
+  // loadCourses(): void {
+  //   this.courseService.getCourses().subscribe(courses => {
+  //     this.courses$.next(courses);
+  //   });
+  // }
   loadEnrolledCourses(): void {
     this.userService.user$.subscribe(user => {
       if (user && user.id) { // Check if user and user.id are defined
@@ -73,4 +74,21 @@ export class MyCoursesComponent implements OnInit {
       data: course
     });
   }
+  loadCourses(): void {
+    this.courseService.getCourses().subscribe(courses => {
+      this.courses$.next(courses);
+      courses.forEach(course => this.loadLessons(course.id)); // טען שיעורים לכל קורס
+    });
+  }
+  
+  loadLessons(courseId: number): void {
+    this.lessonService.getLessons(courseId).subscribe(lessons => {
+      const course = this.courses$.getValue().find(c => c.id === courseId);
+      if (course) {
+        course.lessons = lessons; // עדכון השיעורים של הקורס
+        this.courses$.next(this.courses$.getValue()); // עדכון ה-BehaviorSubject
+      }
+    });
+  }
+  
 }
