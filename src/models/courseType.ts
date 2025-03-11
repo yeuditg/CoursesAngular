@@ -6,7 +6,7 @@ export class courseType{
         public title:string,
         public description:string,
         public teacherId:number,
-        public lessons?:lessonType[],
+        public lessons:lessonType[],
     ){}
 }
 

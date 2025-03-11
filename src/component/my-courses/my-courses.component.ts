@@ -31,11 +31,6 @@ export class MyCoursesComponent implements OnInit {
     this.loadEnrolledCourses(); // Load the courses the user is enrolled in
   }
 
-  // loadCourses(): void {
-  //   this.courseService.getCourses().subscribe(courses => {
-  //     this.courses$.next(courses);
-  //   });
-  // }
   loadEnrolledCourses(): void {
     this.userService.user$.subscribe(user => {
       if (user && user.id) { // Check if user and user.id are defined
@@ -83,6 +78,8 @@ export class MyCoursesComponent implements OnInit {
   
   loadLessons(courseId: number): void {
     this.lessonService.getLessons(courseId).subscribe(lessons => {
+      console.log(lessons,"lesson");
+      
       const course = this.courses$.getValue().find(c => c.id === courseId);
       if (course) {
         course.lessons = lessons; // עדכון השיעורים של הקורס

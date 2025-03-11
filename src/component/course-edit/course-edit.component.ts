@@ -72,6 +72,8 @@ export class CourseEditComponent {
     console.log('save lesson:', this.newLesson);
     console.log('save lesson data:', this.data);
     const index = this.newLesson.id;
+    
+  if (this.data && this.data.lessons) {
     if (index !== 0) {
       this.data.lessons[index] = { ...this.newLesson }; // מעדכנים את השיעור ברשימה
       this.lessonService.updateLesson(this.data.id, this.data.lessons[index].id, this.newLesson).subscribe(() => {
@@ -80,7 +82,7 @@ export class CourseEditComponent {
         //   icon: "success",
         //   draggable: true
         // });
-      });
+    })};
     } else {
       this.addLesson();
     }
@@ -88,12 +90,13 @@ export class CourseEditComponent {
   }
 
   deleteLesson(lesson: lessonType): void {
-    const index = this.data.lessons.findIndex(l => l.id === lesson.id);
+    if (this.data && this.data.lessons) {
+    const index = this.data.lessons?.findIndex(l => l.id === lesson.id);
     if (index !== -1) {
       this.lessonService.deleteLesson(this.data.id, lesson.id).subscribe(() => {
-        this.data.lessons.splice(index, 1); // מסירים את השיעור מהרשימה
+        this.data.lessons?.splice(index, 1); // מסירים את השיעור מהרשימה
         console.log('Lesson deleted');
-      });
+      })};
     }
   }
 }

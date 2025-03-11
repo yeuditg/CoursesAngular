@@ -26,7 +26,8 @@ export class CourseDetailsDialogComponent {
   }
 
   getLessonsTitles(): string {
-    return this.data.lessons.map(lesson => lesson.title).join(', ');
+    
+    return this.data.lessons?.map(lesson => lesson.title).join(', ');
   }
   downloadMaterials(lesson: any): void {
     const content = lesson.content; // תוכן השיעור
